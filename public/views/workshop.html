@@ -1,0 +1,36 @@
+<!-- header directive -->
+<header class="header noSelect"></header>
+
+<!-- Hier moet ook even een fullscreen ding bij zodat je ff nergens op kan klikken! -->
+<div class="popupBackground" ng-show="popup">
+    <div class="popup" ng-show="popup">
+        <h1><span class="icon-check-circle-o icon"></span><span class="success">{{popupTitle}}</span><span>+{{popupScore}} pts.</span></h1>
+    </div>
+</div>
+
+<!-- full screen overlay page -->
+<div class="overlay" ng-controller="OverlayController" ng-style="overlayStyle" ng-include="overlayTemplate"></div>
+
+<!-- Page -->
+<div class="content">
+
+	<!-- sidebar -->
+    <div data-ng-hide="!SidebarService.isVisible()" id="sidebar" class="sidebar">
+        <h2 style="line-height: 40px; font-weight: 600;">
+
+        <span class="icon-star" title="Afgerond" style="float:left; padding-right:10px; color:#525864; font-size:35px; line-height:40px;color:#7ABB1C" ng-show="sidebarStatus == 'done'"></span>
+        <span class="icon-star" title="Nog mee geweest" style="float:left; padding-right:10px; color:#525864; font-size:35px; line-height:40px;color:#FAA50E" ng-show="sidebarStatus == 'busy'"></span>
+        <span class="icon-star" title="Nog niet gedaan" style="float:left; padding-right:10px; color:#525864; font-size:35px; line-height:40px;" ng-show="sidebarStatus != 'busy' && sidebarStatus != 'done'"></span>
+        {{ sidebarTitle }}</h2>
+
+        <p ng-include="sidebarTemplate"></p>
+
+    </div>
+
+
+    <!-- Case -->
+	<div ng-class="{sidebaropen: SidebarService.isVisible()}" class="frame">
+        <div class="inner" ui-view></div>
+    </div>
+
+</div>

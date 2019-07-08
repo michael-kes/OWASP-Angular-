@@ -1,0 +1,52 @@
+<div class="browser">
+
+    <header>
+        <div class="toolbar">
+            <a ng-click="toggleOverlay('overview')" style="float: right; color:inherit; text-decoration:none; cursor:default;
+  line-height: 26px;
+  font-style: italic;">{{score}} <span style="float:right; margin-left:8px; line-height:24px; font-size:20px;" class="icon-check-circle-o"></span></a>
+            <div class="controls" style="padding-left: 6px;">
+                <span class="red" ng-click="toggleOverlay('overview')"></span>
+                <span class="orange" ng-click="toggleSidebar()"></span>
+                <span class="green" ng-click="toggleOverlay('info')"></span>
+            </div>
+        </div>
+        <label class="bar noSelect">
+            <div class="icon-chevron-left" style="float:left;line-height: 28px;background: rgb(226, 227, 231);/* height: 113%; */padding: 0 5px;padding-right: 10px;height: 29px;"></div>
+            <div class="icon-chevron-right" style="float:left;line-height: 28px;background: rgb(226, 227, 231);height: 100%;padding: 0 5px;padding-left: 5px;padding-right: 10px;height: 29px;color: rgb(82, 88, 100);/* text-shadow: 0px 0px 1px #FFF, 0 0 0 #DADADA, 0px 0px 1px #FFF; */"></div>
+            <div class="static">https://www.fifa.com</div>
+            <div class="input"><input value="/login" disabled spellcheck="false"></div>
+        </label>
+    </header>
+
+    <div class="browserContent" style="padding:20px 50px;">
+
+            <h2 style="margin:35px 0; font:100 40px/1 'Roboto', 'Segoe UI', 'Open Sans', Arial;">
+            <span class="icon-lock" style="float:left; padding-right:14px;"></span> Login</h2>
+
+            <pre style="margin:10px 0 20px; background:none; border:none;" ng-show="response.error"><i>{{response.error}}</i><br>{{response.query}}</pre>
+
+            <div class="alert alert-danger" ng-show="response">
+                <span class="icon-info-circle" style="float: left; font-size: 18px; padding-right: 5px;"></span>
+                Enter a valid email address and password
+            </div>
+
+            <form ng-submit="submitForm()" novalidate spellcheck="false" autocomplete="off">
+                <div class="form-group">
+                    <label for="Email">Email address</label>
+                    <input ng-model="data.email" type="text" class="form-control" id="Email" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="Password1">Password</label>
+                    <input ng-model="data.password" type="password" class="form-control" id="Password1" placeholder="Password">
+                </div>
+                <div class="form-group" style="display:none;">
+                    <label for="Textarea">Textarea</label>
+                    <textarea ng-model="data.description" class="form-control" id="Textarea" rows="3"></textarea>
+                    <p class="help-block">Vul maar wat leuke tekst in deze textarea in.</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Inloggen</button>
+            </form>
+
+    </div>
+</div>

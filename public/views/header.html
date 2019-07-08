@@ -1,0 +1,11 @@
+<div class="center"><span>{{ sidebarTitle }}</span></div>
+
+<ul class="left">
+    <li><a ng-click="toggleSidebar()" class="icon-star"></a></li>
+    <li><a ng-click="toggleOverlay('info')" class="icon-info-circle"></a></li>
+    <li><a ng-show="activeCase.status == 'done'" ng-click="toggleOverlay('prevention')" class="icon-code"></a></li>
+</ul>
+
+<ul class="right">
+    <li><a ng-click="toggleOverlay('overview')" style="width:auto; padding: 0 7px;"><span style="float:left; height:47px; line-height:47px; padding-right:17px; width:auto; font-size:23px; font-style: italic;">{{score}}</span><span style="float:right; height:47px; line-height:47px;"class="icon-check-circle-o"></span></a></li>
+</ul>

@@ -1,0 +1,16 @@
+<h1 ng-controller="CasesController" style="padding-top:100px;">
+Uitdagingen overzicht<br><br>
+
+    <a ng-repeat="case in cases" ui-sref="workshop.case({case: '{{case.id}}'})" ui-sref-active="active" ng-click="hideOverlay()" class="overviewLink" style="
+      font-size: 23px;
+  line-height: 1.4;
+  display:block; color:#ebeced; font-family:'Open Sans'; padding-bottom:5px;">
+    <span class="icon-star" title="Afgerond" style="color:#7ABB1C" ng-show="case.status == 'done'"></span>
+    <span class="icon-star" title="Nog mee geweest" style="color:#FAA50E" ng-show="case.status == 'busy'"></span>
+    <span class="icon-star" title="Nog niet gedaan" ng-show="case.status != 'busy' && case.status != 'done'"></span>
+    <span class="text">{{case.name}}</span>
+    <span style="float:right" ng-show="case.score != null && case.score != 0">{{case.score}} pts.</span>
+    </a>
+
+</h1>
+<div ng-click="hideOverlay()" style="color:white;" class="icon-close"></div>

@@ -1,0 +1,172 @@
+<div class="browser">
+    <header>
+        <div class="toolbar">
+            <a ng-click="toggleOverlay('overview')" style="float: right; color:inherit; text-decoration:none; cursor:default;
+  line-height: 26px;
+  font-style: italic;">{{ score }} <span style="float:right; margin-left:8px; line-height:24px; font-size:20px;" class="icon-check-circle-o"></span></a>
+            <div class="controls" style="padding-left: 6px;">
+                <span class="red" ng-click="toggleOverlay('overview')"></span>
+                <span class="orange" ng-click="toggleSidebar()"></span>
+                <span class="green" ng-click="toggleOverlay('info')"></span>
+            </div>
+        </div>
+        <label class="bar noSelect">
+            <div class="icon-chevron-left" style="float:left;line-height: 28px;background: rgb(226, 227, 231);/* height: 113%; */padding: 0 5px;padding-right: 10px;height: 29px;"></div>
+            <div class="icon-chevron-right" style="float:left;line-height: 28px;background: rgb(226, 227, 231);height: 100%;padding: 0 5px;padding-left: 5px;padding-right: 10px;height: 29px;color: rgb(82, 88, 100);/* text-shadow: 0px 0px 1px #FFF, 0 0 0 #DADADA, 0px 0px 1px #FFF; */"></div>
+            <div class="static">https://www.fifa.com</div>
+            <div class="input"><input value="/search" disabled spellcheck="false"/></div>
+        </label>
+    </header>
+    <div class="browserContent" style="padding:20px 50px;">
+        <div class="container-fluid">
+            <div class="row" id="mainarea">
+                <div class="col-xs-10 col-md-3">
+                    <form data-toggle="validator" role="form" id="table-form">
+                        <div class="form-group">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Enter username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email address</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Enter email" data-error="Bruh, that email address is invalid" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password1">Password</label>
+                            <input type="password" class="form-control" id="Password1" placeholder="Enter Password" name="Password1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="BankNumber">Bank Number</label>
+                            <input type="text" class="form-control" id="BankNumber" placeholder="Enter IBAN" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-10 col-md-9">
+                    <div id="wrongtable">
+                        <h2>Wrong Table</h2>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Email</th>
+                                <th>Bank Number</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Gerard</td>
+                                <td>gerardthebest95</td>
+                                <td>gerard-best@hotmail.com</td>
+                                <td>NL00RABO0123456789</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Freek</td>
+                                <td>ditraadniemand31</td>
+                                <td>Freek_Dutch@live.nl</td>
+                                <td>NL00RABO0123456789</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kees</td>
+                                <td>moieem31</td>
+                                <td>Kees.Moi@live.com</td>
+                                <td>NL00RABO0123456789</td>
+                            </tr>
+                            <tr class="info">
+                                <td>4</td>
+                                <td id="nameNode1">Your Name</td>
+                                <td id="passwordNode1">Your Password</td>
+                                <td id="emailNode1">Your Email</td>
+                                <td id="banknrNode1">Your Bank Number</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="goodtable">
+                        <h2>Good Table</h2>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Email</th>
+                                <th>Bank Number</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Gerard</td>
+                                <td id="pass1"></td>
+                                <td>gerard-best@hotmail.com</td>
+                                <td id="item1"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Freek</td>
+                                <td id="pass2"></td>
+                                <td>Freek_Dutch@live.nl</td>
+                                <td id="item2"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kees</td>
+                                <td id="pass3"></td>
+                                <td>Kees.Moi@live.com</td>
+                                <td id="item3"></td>
+                            </tr>
+                            <tr class="info">
+                                <td>4</td>
+                                <td id="nameNode2">Your Name</td>
+                                <td id="passwordNode2">Your Password</td>
+                                <td id="emailNode2">Your Email</td>
+                                <td id="banknrNode2">Your Bank Number</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-md-3"></div>
+            </div>
+        </div>
+
+        <!-- Bootstrap and Jquery -->
+        <script>
+            $(document).ready(function() {
+
+                //wrong table
+                $('#table-form input').bind('blur keyup',function() {
+                    //name
+                    $('#nameNode1').text($('#Username').val());
+                    //name
+                    $('#passwordNode1').text($('#Password1').val());
+                    //name
+                    $('#emailNode1').text($('#Email').val());
+                    //name
+                    $('#banknrNode1').text($('#BankNumber').val());
+                });
+
+                //good table
+                $('#table-form input').bind('blur keyup',function() {
+                    //name
+                    $('#nameNode2').text($('#Username').val());
+                    //name
+                    $('#passwordNode2').text(CryptoJS.MD5($('#Password1').val()));
+                    //name
+                    $('#emailNode2').text($('#Email').val());
+                    //name
+                    $('#banknrNode2').text(CryptoJS.MD5($('#BankNumber').val()));
+                });
+
+                $('#item1').text($.md5("NL00RABO0123456789"));
+                $('#item2').text($.md5("NL00RABO0123456789"));
+                $('#item3').text($.md5("NL00RABO0123456789"));
+                $('#pass1').text($.md5("gerardthebest95"));
+                $('#pass2').text($.md5("ditraadniemand31"));
+                $('#pass3').text($.md5("moieem31"));
+            });
+        </script>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+        <script src="../js/validator.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+
+
+    </div>
+</div>

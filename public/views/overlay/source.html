@@ -1,0 +1,12 @@
+<h1 style="padding-top:100px;"><span style="font-weight:300;">Voorkomen van</span> {{activeCase.name}}</h1>
+<div ng-click="hideOverlay()" class="icon-close"></div>
+<p style="  margin: 0 0 10px;
+  color: white;
+  text-align: left;
+  max-width:600px; margin:0 auto 50px;">
+    {{activeCase.description}}
+</p>
+
+<div style="width:600px; margin:0 auto 30px; text-align:left;" class="ng-scope">
+    <div ng-click="hideOverlay(); nextCase();" class="btn btn-primary btn-lg">Volgende uitdaging</div>
+</div>

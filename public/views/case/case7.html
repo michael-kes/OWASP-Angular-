@@ -1,0 +1,64 @@
+<div class="browser">
+    <header>
+        <div class="toolbar">
+            <a ng-click="toggleOverlay('overview')" style="float: right; color:inherit; text-decoration:none; cursor:default;
+  line-height: 26px;
+  font-style: italic;">{{score}} <span style="float:right; margin-left:8px; line-height:24px; font-size:20px;" class="icon-check-circle-o"></span></a>
+            <div class="controls" style="padding-left: 6px;">
+                <span class="red" ng-click="toggleOverlay('overview')"></span>
+                <span class="orange" ng-click="toggleSidebar()"></span>
+                <span class="green" ng-click="toggleOverlay('info')"></span>
+            </div>
+        </div>
+        <label class="bar noSelect">
+            <div class="icon-chevron-left" style="float:left;line-height: 28px;background: rgb(226, 227, 231);/* height: 113%; */padding: 0 5px;padding-right: 10px;height: 29px;"></div>
+            <div class="icon-chevron-right" style="float:left;line-height: 28px;background: rgb(226, 227, 231);height: 100%;padding: 0 5px;padding-left: 5px;padding-right: 10px;height: 29px;color: rgb(82, 88, 100);/* text-shadow: 0px 0px 1px #FFF, 0 0 0 #DADADA, 0px 0px 1px #FFF; */"></div>
+            <div class="static">https://www.fifa.com/gastenboek</div>
+            <div class="input"><input spellcheck="false" ng-model="query" ng-keyup="queryStringChanged($event)"/></div>
+        </label>
+    </header>
+    <div class="browserContent" style="padding:20px 50px;">
+        <!-- <div ng-hide="login">
+            INLOGGEN
+            <div class="inloggen">
+                <div class="form-group">
+                    <label>username</label>
+                    <input type="text" class="form-control" ng-disabled="true" ng-model="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-disabled="true" ng-model="password">
+                </div>
+                <button class="btn btn-primary" ng-click="changeLogin()">Inloggen</button>
+            </div>
+
+        </div> -->
+            <h3>Gastenboek</h3>
+            <p>Plaats een nieuw bericht: </p>
+            <hr>
+            <form ng-submit="form.$valid && submitForm()" name="form" novalidate>
+                <div class="form-group">
+                    <label>Naam</label>
+                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-disabled="true" ng-model="newMessage.author" disabled="disabled" value="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Bericht:</label>
+                    <textarea required class="form-control" rows="3" ng-model="newMessage.message"></textarea>
+                </div>
+                <button class="btn btn-primary" ng-disabled="!form.$valid" type="submit">Bericht plaatsen</button>
+            </form>
+            <hr>
+
+            <p>De meest recente berichten:</p>
+            <div class="loading" ng-show="loading"></div>
+            <div class="message" ng-repeat="message in messages | orderBy:'-'">
+                <div class="head">
+                    <div class="image">
+                    </div>
+                    <b ng-bind-html="message.author"></b><b style="float: right; color: red;" ng-if="showDelete(message.author)" ng-click="deleteMessage(message)">Delete</b>
+                    <div ng-bind-html="message.insertDate" class="datetime"></div>
+                </div>
+                <div ng-bind-html="message.message | trust_as_html"></div>
+            </div>
+        <!-- browser content end -->
+    </div>
+</div>

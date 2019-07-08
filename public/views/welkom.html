@@ -1,0 +1,28 @@
+<!-- header directive -->
+<header class="header noSelect"></header>
+
+<!-- full screen overlay page -->
+<div class="overlay" style="background-color: rgb(82, 88, 100);">
+
+<h1 style="padding-top:70px;" ng-controller="CasesController">
+
+    <div style="font-weight:100;">Welkom bij de OWASP Workschop</div><br>
+    <a ng-repeat="case in cases" ui-sref="{{case.state}}" ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">
+    <span class="icon-check-circle-o" style="color:#7ABB1C" ng-show="case.status == 'done'"></span>
+    <span class="icon-check-circle-o" style="color:#FAA50E" ng-show="case.status == 'busy'"></span>
+    <span class="icon-check-circle-o" style="color:#EE4041" ng-show="case.status == 'none'"></span>
+    {{case.name}}
+    </a>
+
+    <a ui-sref='workshop.case1' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 1</a>
+    <a ui-sref='workshop.case2' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 2</a>
+    <a ui-sref='workshop.case3' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 3</a>
+    <a ui-sref='workshop.case4' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 4</a>
+    <a ui-sref='workshop.case5' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 5</a>
+    <a ui-sref='workshop.case6' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 6</a>
+    <a ui-sref='workshop.case7' ng-click="hideOverlay()" style="display:block; color:white; padding-bottom:5px;">Case 7</a>
+
+</h1>
+<div ng-click="hideOverlay()" style="color:white;" class="icon-close"></div>
+
+</div>
